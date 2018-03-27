@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 from . import serializers
+from . import models 
 
 class HelloApiView(APIView):
     """Test Api view"""
@@ -101,6 +102,11 @@ class HelloViewSet(viewsets.ViewSet):
 
         return Response({"http_method": "DELETE"})
 
+class UserProfileViewSet(viewsets.ModelViewSet):
+    """Handles creating, reading and updating objects."""
+
+    serializer_class = serializers.UserProfileSerializer
+    queryset = models.UserProfile.objects.all() # this is how you retrieve database for the viewset
 
 
 
